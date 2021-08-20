@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export default function AddTodo({ submitHandler }){
     const [text, setText] = useState('');
@@ -18,7 +19,8 @@ export default function AddTodo({ submitHandler }){
                 <TouchableOpacity style={ styles.buttonStyle }                     
                     onPress={ () => submitHandler(text)}  
                 >
-                    <Text style={{color: '#fff', textAlign: 'center', fontWeight: 'bold', fontSize: 20}}>Add</Text>
+                    <MaterialIcons name='add' size={18} color='#fff' />
+                    {/*<Text style={{color: '#fff', textAlign: 'center', fontWeight: 'bold', fontSize: 20}}>Add</Text>*/}
                 </TouchableOpacity>
             </View>
         </View>
@@ -39,9 +41,11 @@ const styles = StyleSheet.create({
     buttonStyle: {
         justifyContent: 'center',
         backgroundColor: '#007a33',
-        borderRadius: 20,
-        width: 70,
-        height: 35,
+        borderRadius: 30,
+        width: 50,
+        height: 50,
+        flexDirection: 'row',
+        alignItems: 'center',
     },
 
 })
