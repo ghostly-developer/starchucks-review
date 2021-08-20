@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity } from 'react-native';
 
 export default function AddTodo({ submitHandler }){
-    const [text, setText] = useState('text');
+    const [text, setText] = useState('');
     function changeHandler(value){
         setText(value);
     }
@@ -14,11 +14,13 @@ export default function AddTodo({ submitHandler }){
                 placeholder="New Todo" 
                 onChangeText={ changeHandler }
             />
-            <Button 
-                onPress={ () => submitHandler(text)}
-                title="Add Todo"
-                color="green"
-            />
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                <TouchableOpacity style={ styles.buttonStyle }                     
+                    onPress={ () => submitHandler(text)}  
+                >
+                    <Text style={{color: '#fff', textAlign: 'center', fontWeight: 'bold', fontSize: 20}}>Add</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }
@@ -33,7 +35,14 @@ const styles = StyleSheet.create({
         borderRadius: 16,
     },
 
-    buttonContainer: {
-        borderRadius: 16,
-    }
+    
+    buttonStyle: {
+
+        justifyContent: 'center',
+        backgroundColor: '#007a33',
+        borderRadius: 20,
+        width: 70,
+        height: 35,
+    },
+
 })
