@@ -19,7 +19,7 @@ export default function AddTodo({ submitHandler }){
                 <TouchableOpacity style={ styles.buttonStyle }                     
                     onPress={ () => submitHandler(text)}  
                 >
-                    <MaterialIcons name='add' size={18} color='#fff' />
+                    <MaterialIcons name='add' size={24} color='#fff' />
                     {/*<Text style={{color: '#fff', textAlign: 'center', fontWeight: 'bold', fontSize: 20}}>Add</Text>*/}
                 </TouchableOpacity>
             </View>
