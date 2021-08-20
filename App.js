@@ -1,6 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, FlatList, Alert } from 'react-native';
+import Header from './components/header';
+import TodoItem from './components/TodoItem';
+import AddTodo from './components/AddTodo';
 
 export default function App() {
   const [todos, setTodos] = useState([
@@ -9,19 +12,41 @@ export default function App() {
     { text: 'Get Worldbox', key: '3' }
   ]);
 
+  function pressHandler(key){
+    setTodos((prevTodos) => {
+      return prevTodos.filter(todo => todo.key != key);
+    })
+  }
+
+  function submitHandler(text){
+    if (text.length > 3 ){
+      setTodos((prevTodos) => {
+        return [
+          {text: text, key: Math.random().toString() }, //Not the best way, temporary key generation
+          ...prevTodos
+        ]
+      })
+    } else{
+      Alert.alert("Oops!", "Todos must be over 3 characters long.", [
+        {text: "Acknowledge", onPress: () => console.log("Alert Colosed")}
+      ]);
+    }
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
       {/* Header */}
+      <Header />
 
       <View style={styles.content}>
         {/* Form */}
-
+        <AddTodo submitHandler={ submitHandler }/>
         <View style={styles.list}>
           <FlatList 
             data={ todos }
             renderItem={ ({ item }) => (
-              <Text>{ item.text }</Text>
+              <TodoItem item={ item } pressHandler={ pressHandler }/>
             )}
           />
         </View>
@@ -33,7 +58,7 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  textW: {
+  textM: {
     color: '#007a33',
   },
 
