@@ -37,10 +37,6 @@ const styles = StyleSheet.create({
 
     
     buttonStyle: {
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
         justifyContent: 'center',
         backgroundColor: '#007a33',
         borderRadius: 20,
