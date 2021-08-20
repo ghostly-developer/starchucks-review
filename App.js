@@ -60,6 +60,7 @@ export default function App() {
   );
 }
 
+//flex: 1 takes the whole available screenspace, like using vh in HTML
 const styles = StyleSheet.create({
   textM: {
     color: '#007a33',
@@ -71,10 +72,12 @@ const styles = StyleSheet.create({
   },
 
   content: {
+    flex: 1,
     padding: 40,
   },
 
   list: {
+    flex: 1,
     marginTop: 20,
   }
 });
